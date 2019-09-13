@@ -26,10 +26,10 @@ export class OfferService {
     }); 
   }
 
-  updateOfferService(s){
+  updateOfferService(id,s){
     console.log("Servicio recibe objeto para PUT");
     console.log(s);
-    this.httpClient.put('http://localhost:9966/petclinic/api/offer/' + s.id,s).subscribe(data => {
+    this.httpClient.put('http://localhost:9966/petclinic/api/offer/' + id,s).subscribe(data => {
       
       console.log(data);
 

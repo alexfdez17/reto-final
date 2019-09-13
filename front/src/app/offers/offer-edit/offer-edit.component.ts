@@ -57,7 +57,7 @@ export class OfferEditComponent implements OnInit {
       "expireDate" : this.formulario.get("expireDate").value
     }
 
-    this.offerService.updateOfferService(this.objetoAEditar);
+    this.offerService.updateOfferService(this.currentId,this.objetoAEditar);
 
   }
 
