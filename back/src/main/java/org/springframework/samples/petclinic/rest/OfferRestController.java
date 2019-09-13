@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("api/offer")
 public class OfferRestController {
-	
+
 	@Autowired
 	OfferService offerService;
-	
+
 	@RequestMapping(value = "/notexpired", method = RequestMethod.GET)
 	public ResponseEntity<List<Offer>> getOffersNotExpired() {
 		List<Offer> offers = offerService.findByExpireDateAfter(new Date());
@@ -33,13 +33,13 @@ public class OfferRestController {
 		}
 		return new ResponseEntity<List<Offer>>(offers, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Offer> deleteAOffer(@PathVariable(value = "id") int id) {
 		offerService.delete(id);
 		return new ResponseEntity<Offer>(HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Offer> updateOffer(@RequestBody @Valid Offer offer, @PathVariable(value = "id") int id) {
 		if (offer.getId() != id) {
@@ -56,8 +56,8 @@ public class OfferRestController {
 		}
 		return new ResponseEntity<List<Offer>>(offers, HttpStatus.OK);
 	}
-	
-	@RequestMapping( method = RequestMethod.POST)
+
+	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Offer> addOffer(@RequestBody @Valid Offer offer, BindingResult bindingResult) {
 		BindingErrorsResponse errors = new BindingErrorsResponse();
 		HttpHeaders headers = new HttpHeaders();
@@ -70,6 +70,12 @@ public class OfferRestController {
 		return new ResponseEntity<Offer>(offer, HttpStatus.CREATED);
 	}
 
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Offer> getOfferById(@PathVariable(value = "id") int id) {
+		if (id == 0) {
+			return new ResponseEntity<Offer>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Offer>(offerService.findOne(id), HttpStatus.OK);
+	}
+
 }
-
-
