@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,14 @@ public class OfferServiceImpl implements OfferService{
 	}
 
 	@Override
-	public void delete(Offer offer) {
-		offerRepository.delete(offer);
+	public void delete(int id) {
+		offerRepository.delete(id);
 	}
+
+	@Override
+	public List<Offer> findByExpireDateAfter(Date date) {
+		return offerRepository.findByExpireDateAfter(date);
+	}
+	
 
 }
