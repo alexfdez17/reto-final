@@ -28,7 +28,7 @@ public class OfferRestController {
 	
 	@RequestMapping(value = "/notexpired", method = RequestMethod.GET)
 	public ResponseEntity<List<Offer>> getOffersNotExpired() {
-		List<Offer> offers = this.offerService.findByExpireDateAfter(new Date());
+		List<Offer> offers = offerService.findByExpireDateAfter(new Date());
 		if (offers.isEmpty()) {
 			return new ResponseEntity<List<Offer>>(HttpStatus.NOT_FOUND);
 		}
@@ -37,7 +37,7 @@ public class OfferRestController {
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Offer> deleteAOffer(@PathVariable(value = "id") int id) {
-		this.offerService.delete(id);
+		offerService.delete(id);
 		return new ResponseEntity<Offer>(HttpStatus.OK);
 	}
 	
@@ -51,7 +51,7 @@ public class OfferRestController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<Collection<Offer>> getOffersList() {
-		List<Offer> offers = this.offerService.findAll();
+		List<Offer> offers = offerService.findAll();
 		if (offers.isEmpty()) {
 			return new ResponseEntity<Collection<Offer>>(HttpStatus.NOT_FOUND);
 		}
