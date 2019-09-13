@@ -1,6 +1,5 @@
 package org.springframework.samples.petclinic.rest;
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -50,12 +49,12 @@ public class OfferRestController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<Collection<Offer>> getOffersList() {
+	public ResponseEntity<List<Offer>> getOffersList() {
 		List<Offer> offers = offerService.findAll();
 		if (offers.isEmpty()) {
-			return new ResponseEntity<Collection<Offer>>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<List<Offer>>(HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<Collection<Offer>>(offers, HttpStatus.OK);
+		return new ResponseEntity<List<Offer>>(offers, HttpStatus.OK);
 	}
 	
 	@RequestMapping( method = RequestMethod.POST)
