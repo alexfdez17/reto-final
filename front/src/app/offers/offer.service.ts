@@ -8,6 +8,12 @@ export class OfferService {
 
   constructor(private httpClient: HttpClient) { }
 
+
+  getAllOffersService(){
+    return this.httpClient.get('http://localhost:3000/offers');
+  }
+
+
   getOffers(){
 
     //
