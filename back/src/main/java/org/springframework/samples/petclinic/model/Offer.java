@@ -3,7 +3,7 @@ package org.springframework.samples.petclinic.model;
 import java.sql.Date;
 
 import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -14,14 +14,13 @@ import org.springframework.format.annotation.DateTimeFormat;
  *
  * @author Ken Krebs
  */
-@MappedSuperclass
+@Entity
 public class Offer extends BaseEntity {
 
     protected String title;
 
     protected double discount;
     
-    @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     @Column(name = "expire_date")
     protected Date expireDate;
