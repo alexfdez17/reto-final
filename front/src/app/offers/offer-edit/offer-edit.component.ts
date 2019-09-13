@@ -51,6 +51,7 @@ export class OfferEditComponent implements OnInit {
   updateOfferComponent(){
 
     this.objetoAEditar={
+      "id": this.currentId,
       "title": this.formulario.get("title").value,
       "description": this.formulario.get("description").value,
       "discount": this.formulario.get("discount").value,
