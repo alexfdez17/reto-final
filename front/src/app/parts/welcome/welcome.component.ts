@@ -22,6 +22,7 @@
  */
 
 import {Component, OnInit} from '@angular/core';
+import { OfferService } from 'app/offers/offer.service';
 
 @Component({
   selector: 'app-welcome',
@@ -29,11 +30,20 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
+  offers;
 
-  constructor() {
+  constructor(private offerService: OfferService) {
   }
 
   ngOnInit() {
+    this.offerService.getAllOfferNotExpiredService().subscribe(
+      data => {
+        this.offers = data;
+      },
+      error => {
+        console.log("Error al obtener datos");
+      }
+    );
   }
 
 }

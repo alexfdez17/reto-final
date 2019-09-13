@@ -8,6 +8,15 @@ export class OfferService {
 
   constructor(private httpClient: HttpClient) { }
 
+  getAllOffersService(){
+    //return this.httpClient.get('http://localhost:3000/offers');
+    return this.httpClient.get('http://localhost:9966/petclinic/api/offer');
+  }
+
+  getAllOfferNotExpiredService(){
+    return this.httpClient.get('http://localhost:9966/petclinic/api/offer/notexpired');
+  }
+
   insertOfferService(s){
     console.log("Servicio recibe objeto para POST");
     console.log(s);

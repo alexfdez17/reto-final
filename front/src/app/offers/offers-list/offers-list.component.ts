@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { OfferService } from '../offer.service';
+import { Offer } from '../offer';
 
 @Component({
   selector: 'app-offers-list',
@@ -8,9 +10,20 @@ import { Router } from '@angular/router';
 })
 export class OffersListComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private offerService: OfferService,private route: ActivatedRoute) { }
+
+  offers;
 
   ngOnInit() {
+
+    this.offerService.getAllOffersService().subscribe(
+      data => {
+        this.offers = data;
+      },
+      error => {
+        console.log("Error al obtener datos");
+      }
+    );
   }
 
   gotoHome() {
