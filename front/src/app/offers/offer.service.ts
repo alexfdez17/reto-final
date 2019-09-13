@@ -11,7 +11,7 @@ export class OfferService {
   insertOfferService(s){
     console.log("Servicio recibe objeto para POST");
     console.log(s);
-    this.httpClient.post('https://jsonplaceholder.typicode.com/todos/',s).subscribe(data => {
+    this.httpClient.post('http://localhost:9966/petclinic/api/offer/',s).subscribe(data => {
       
       console.log(data);
 
@@ -19,7 +19,7 @@ export class OfferService {
   }
 
   deleteOfferService(id){
-    this.httpClient.delete('https://jsonplaceholder.typicode.com/todos/'+id).subscribe(data => {
+    this.httpClient.delete('http://localhost:9966/petclinic/api/offer/'+id).subscribe(data => {
       
       console.log(data);
 
@@ -29,7 +29,7 @@ export class OfferService {
   updateOfferService(s){
     console.log("Servicio recibe objeto para PUT");
     console.log(s);
-    this.httpClient.put('https://jsonplaceholder.typicode.com/todos/',s).subscribe(data => {
+    this.httpClient.put('http://localhost:9966/petclinic/api/offer/' + s.id,s).subscribe(data => {
       
       console.log(data);
 
