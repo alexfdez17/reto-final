@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-
 export class OfferService {
 
   constructor(private httpClient: HttpClient) { }
@@ -15,28 +14,18 @@ export class OfferService {
 
   }
 
-  insertOffer(s){
-
-
-
-    this.ownserService.insertaMascota(this.objetoAInsertar).subscribe(data => {
+  insertOfferService(s){
+    console.log("Servicio recibe objeto para POST");
+    console.log(s);
+    this.httpClient.post('https://jsonplaceholder.typicode.com/todos/',s).subscribe(data => {
+      
       console.log(data);
 
-      var myTable = document.getElementById('mascotukistabla'),
-      tbody = myTable.getElementsByTagName('tbody')[0],
-      tr = tbody.insertRow(0);
-  
-
-      var td = document.createElement('td');
-      td.innerHTML = data['title'];
-      tr.appendChild(td);
-
-    });
-
+    }); 
   }
 
   deleteOffer(s){
-    //  
+   //  
   }
 
   updateOffer(s){

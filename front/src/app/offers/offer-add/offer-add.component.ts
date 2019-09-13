@@ -32,13 +32,17 @@ export class OfferAddComponent implements OnInit {
 
   }
 
-  insertOffer(){
+  insertOfferComponent(){
+
     this.objetoAInsertar={
-      "title": this.formulario.title,
-      "description": this.formulario.description,
-      "discount": this.formulario.discount,
-      "expireDate" : this.formulario.expireDate
+      "title": this.formulario.get("title").value,
+      "description": this.formulario.get("description").value,
+      "discount": this.formulario.get("discount").value,
+      "expireDate" : this.formulario.get("expireDate").value
     }
+
+    this.offerService.insertOfferService(this.objetoAInsertar);
+
   }
 
 }
