@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OfferService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private router: Router, private route: ActivatedRoute) { }
 
   getAllOffersService(){
-    //return this.httpClient.get('http://localhost:3000/offers');
     return this.httpClient.get('http://localhost:9966/petclinic/api/offer');
   }
 
@@ -24,6 +24,8 @@ export class OfferService {
       
       console.log(data);
 
+      this.router.navigateByUrl('/offers');
+
     }); 
   }
 
@@ -31,6 +33,8 @@ export class OfferService {
     this.httpClient.delete('http://localhost:9966/petclinic/api/offer/'+id).subscribe(data => {
       
       console.log(data);
+
+      this.router.navigateByUrl('/offers');
 
     }); 
   }
@@ -41,6 +45,8 @@ export class OfferService {
     this.httpClient.put('http://localhost:9966/petclinic/api/offer/' + id,s).subscribe(data => {
       
       console.log(data);
+
+      this.router.navigateByUrl('/offers');
 
     }); 
   }

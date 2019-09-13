@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OffersListComponent } from './offers-list/offers-list.component';
 import { RouterModule } from '@angular/router';
 import { OfferEditComponent } from './offer-edit/offer-edit.component';
+import { OfferDeleteComponent } from './offer-delete/offer-delete.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import { OfferEditComponent } from './offer-edit/offer-edit.component';
     ReactiveFormsModule,
     RouterModule
   ],
-  declarations: [OfferAddComponent, OffersListComponent, OfferEditComponent]
+  declarations: [OfferAddComponent, OffersListComponent, OfferEditComponent, OfferDeleteComponent]
 })
 export class OffersModule { }
