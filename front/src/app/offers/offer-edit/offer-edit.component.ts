@@ -5,14 +5,19 @@ import { OfferService } from '../offer.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-offer-add',
-  templateUrl: './offer-add.component.html',
-  styleUrls: ['./offer-add.component.css']
+  selector: 'app-offer-edit',
+  templateUrl: './offer-edit.component.html',
+  styleUrls: ['./offer-edit.component.css']
 })
-export class OfferAddComponent implements OnInit {
+export class OfferEditComponent implements OnInit {
 
   formulario : FormGroup;
-  objetoAInsertar;
+  objetoAEditar;
+  currentId;
+  currentTitle : string;
+  currentDescription : string;
+  currentDiscount : number;
+  currentExpireDate : string;
 
   constructor(
     private offerService: OfferService,
@@ -24,24 +29,30 @@ export class OfferAddComponent implements OnInit {
   ngOnInit() {
 
     this.formulario = this.formBuilder.group({
-      title: ['',Validators.required],
-      description: ['',Validators.required],
-      discount: ['',Validators.required],
-      expireDate: ['',Validators.required],
-    })
+      title: [this.currentTitle,Validators.required],
+      description: [this.currentDescription,Validators.required],
+      discount: [this.currentDiscount,Validators.required],
+      expireDate: [this.currentExpireDate,Validators.required],
+    });
+
+    this.httpClient.get('https://xxxxxxxxxxxx'+this.currentId).subscribe(data => {
+      
+      console.log(data);
+
+    }); 
 
   }
 
-  insertOfferComponent(){
+  updateOfferComponent(){
 
-    this.objetoAInsertar={
+    this.objetoAEditar={
       "title": this.formulario.get("title").value,
       "description": this.formulario.get("description").value,
       "discount": this.formulario.get("discount").value,
       "expireDate" : this.formulario.get("expireDate").value
     }
 
-    this.offerService.insertOfferService(this.objetoAInsertar);
+    this.offerService.updateOfferService(this.objetoAEditar);
 
   }
 

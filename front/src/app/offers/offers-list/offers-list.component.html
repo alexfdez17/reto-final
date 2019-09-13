@@ -1,7 +1,3 @@
-<p>
-  offers-list works!
-</p>
-
 <div class="container-fluid">
   <div class="container xd-container">
 
@@ -33,7 +29,7 @@
                  {{ offer.expireDate }}
               </td>
               <td>
-                <i class="fas fa-pencil" routerLink="/offers/edit/{{offer.id}}"></i> 
+                <i class="fas fa-edit" routerLink="/offers/edit/{{offer.id}}"></i> 
               </td>
               <td>
                 <i class="fas fa-times" routerLink="/offers/delete/{{offer.id}}"></i>
@@ -43,7 +39,7 @@
     </table>
 
     <div>
-      <button class="btn btn-default" (click)="goToHome()">Home</button>
-      <button class="btn btn-default"> Add </button>
+      <button class="btn btn-default" routerLink="/welcome">Home</button>
+      <button class="btn btn-default" routerLink="/offers/add">Add New Offer</button>
     </div>
 </div>

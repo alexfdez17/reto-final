@@ -4,6 +4,7 @@ import { OfferAddComponent } from './offer-add/offer-add.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OffersListComponent } from './offers-list/offers-list.component';
 import { RouterModule } from '@angular/router';
+import { OfferEditComponent } from './offer-edit/offer-edit.component';
 
 @NgModule({
   imports: [
@@ -11,6 +12,6 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     RouterModule
   ],
-  declarations: [OfferAddComponent, OffersListComponent]
+  declarations: [OfferAddComponent, OffersListComponent, OfferEditComponent]
 })
 export class OffersModule { }

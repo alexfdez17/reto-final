@@ -19,7 +19,6 @@ export class OffersListComponent implements OnInit {
     this.offerService.getAllOffersService().subscribe(
       data => {
         this.offers = data;
-        console.log(data);
       },
       error => {
         console.log("Error al obtener datos");

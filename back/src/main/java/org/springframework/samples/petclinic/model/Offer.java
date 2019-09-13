@@ -4,8 +4,7 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -15,6 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  * @author Ken Krebs
  */
 @Entity
+@Table(name ="offers")
 public class Offer extends BaseEntity {
 
     protected String title;
