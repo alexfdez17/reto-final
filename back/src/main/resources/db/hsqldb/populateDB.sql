@@ -57,3 +57,8 @@ INSERT INTO users(username,password,enabled) VALUES ('admin','admin', true);
 INSERT INTO roles (username, role) VALUES ('admin', 'ROLE_OWNER_ADMIN');
 INSERT INTO roles (username, role) VALUES ('admin', 'ROLE_VET_ADMIN');
 INSERT INTO roles (username, role) VALUES ('admin', 'ROLE_ADMIN');
+
+INSERT INTO offers VALUES (1, 'Familia Numerosa', 'Descuento del 15% presentando Libro de Familia', 15,'2020-05-01');
+INSERT INTO offers VALUES (2, 'Carnet Joven', 'Descuento del 10% presentando el Carnet Joven', 10,'2999-01-01');
+
+
