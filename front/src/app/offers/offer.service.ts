@@ -8,12 +8,6 @@ export class OfferService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getOffers(){
-
-    //
-
-  }
-
   insertOfferService(s){
     console.log("Servicio recibe objeto para POST");
     console.log(s);
@@ -24,12 +18,22 @@ export class OfferService {
     }); 
   }
 
-  deleteOffer(s){
-   //  
+  deleteOfferService(id){
+    this.httpClient.delete('https://jsonplaceholder.typicode.com/todos/'+id).subscribe(data => {
+      
+      console.log(data);
+
+    }); 
   }
 
-  updateOffer(s){
-    // 
+  updateOfferService(s){
+    console.log("Servicio recibe objeto para PUT");
+    console.log(s);
+    this.httpClient.put('https://jsonplaceholder.typicode.com/todos/',s).subscribe(data => {
+      
+      console.log(data);
+
+    }); 
   }
 
 }
