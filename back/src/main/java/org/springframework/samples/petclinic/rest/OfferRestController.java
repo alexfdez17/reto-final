@@ -11,7 +11,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.samples.petclinic.model.Offer;
-import org.springframework.samples.petclinic.service.OfferServiceImpl;
+import org.springframework.samples.petclinic.service.OfferService;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,11 +24,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class OfferRestController {
 	
 	@Autowired
-	OfferServiceImpl offerSeImpl;
+	OfferService offerService;
 	
 	@RequestMapping(value = "/notexpired", method = RequestMethod.GET)
 	public ResponseEntity<List<Offer>> getOffersNotExpired() {
-		List<Offer> offers = this.offerSeImpl.findByExpireDateAfter(new Date());
+		List<Offer> offers = this.offerService.findByExpireDateAfter(new Date());
 		if (offers.isEmpty()) {
 			return new ResponseEntity<List<Offer>>(HttpStatus.NOT_FOUND);
 		}
@@ -37,7 +37,7 @@ public class OfferRestController {
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Offer> deleteAOffer(@PathVariable(value = "id") int id) {
-		this.offerSeImpl.delete(id);
+		this.offerService.delete(id);
 		return new ResponseEntity<Offer>(HttpStatus.OK);
 	}
 	
@@ -46,12 +46,12 @@ public class OfferRestController {
 		if (offer.getId() != id) {
 			return new ResponseEntity<Offer>(HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<Offer>(offerSeImpl.save(offer), HttpStatus.OK);
+		return new ResponseEntity<Offer>(offerService.save(offer), HttpStatus.OK);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<Collection<Offer>> getOffersList() {
-		List<Offer> offers = this.offerSeImpl.findAll();
+		List<Offer> offers = this.offerService.findAll();
 		if (offers.isEmpty()) {
 			return new ResponseEntity<Collection<Offer>>(HttpStatus.NOT_FOUND);
 		}
@@ -67,7 +67,7 @@ public class OfferRestController {
 			headers.add("errors", errors.toJSON());
 			return new ResponseEntity<Offer>(headers, HttpStatus.BAD_REQUEST);
 		}
-		this.offerSeImpl.save(offer);
+		this.offerService.save(offer);
 		return new ResponseEntity<Offer>(offer, HttpStatus.CREATED);
 	}
 
