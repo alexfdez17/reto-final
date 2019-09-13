@@ -28,16 +28,21 @@ export class OfferEditComponent implements OnInit {
 
   ngOnInit() {
 
+    this.currentId = this.route.snapshot.paramMap.get('id');
+
     this.formulario = this.formBuilder.group({
-      title: [this.currentTitle,Validators.required],
-      description: [this.currentDescription,Validators.required],
-      discount: [this.currentDiscount,Validators.required],
-      expireDate: [this.currentExpireDate,Validators.required],
+      title: ['',Validators.required],
+      description: ['',Validators.required],
+      discount: ['',Validators.required],
+      expireDate: ['',Validators.required],
     });
 
-    this.httpClient.get('https://xxxxxxxxxxxx'+this.currentId).subscribe(data => {
+    this.httpClient.get('http://localhost:9966/petclinic/api/offer/'+this.currentId).subscribe(data => {
       
-      console.log(data);
+      this.formulario.get("title").setValue(data['title']);
+      this.formulario.get("description").setValue(data['description']);
+      this.formulario.get("discount").setValue(data['discount']);
+      this.formulario.get("expireDate").setValue(data['expireDate']);
 
     }); 
 
@@ -46,14 +51,31 @@ export class OfferEditComponent implements OnInit {
   updateOfferComponent(){
 
     this.objetoAEditar={
+      "id": this.currentId,
       "title": this.formulario.get("title").value,
       "description": this.formulario.get("description").value,
       "discount": this.formulario.get("discount").value,
       "expireDate" : this.formulario.get("expireDate").value
     }
 
-    this.offerService.updateOfferService(this.objetoAEditar);
+    this.offerService.updateOfferService(this.currentId,this.objetoAEditar);
 
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
