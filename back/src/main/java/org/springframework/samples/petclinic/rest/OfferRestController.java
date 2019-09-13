@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("api/offer")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(exposedHeaders = "errors, content-type")
 public class OfferRestController {
 
 	@Autowired
