@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div class="container xd-container">
+    <h2>
+      Add Offer
+    </h2>
+    <form [formGroup]="formulario" class="form-horizontal" (ngSubmit)="onSubmit(offerForm.value)">
+      <div class="form-group">
+        <input placeholder="Title" class="form-control margeninferior" formControlName="title" />
+        <input placeholder="Description" class="form-control margeninferior" formControlName="description" />
+        <input placeholder="Discount" class="form-control margeninferior" formControlName="discount" />
+        <input placeholder="Expire Date" class="form-control margeninferior" formControlName="expireDate" />
+        <button type="submit" class="btn btn-success margenderecha" [disabled]="!formulario.valid" (click)="enviarElMambo()">Crear</button>
+      </div>
+    </form>
+  </div>
+</div>

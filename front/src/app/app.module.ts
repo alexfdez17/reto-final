@@ -27,6 +27,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {OwnersModule} from './owners/owners.module';
+import {OffersModule} from './offers/offers.module';
 import {PetsModule} from './pets/pets.module';
 import {VisitsModule} from './visits/visits.module';
 import {PetTypesModule} from './pettypes/pettypes.module';
@@ -39,13 +40,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     OwnersModule,
+    OffersModule,
     PetsModule,
     VisitsModule,
     PetTypesModule,
