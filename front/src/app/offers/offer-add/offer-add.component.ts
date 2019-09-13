@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class OfferAddComponent implements OnInit {
 
   formulario : FormGroup;
+  objetoAInsertar;
 
   constructor(
     private offerService: OfferService,
@@ -29,6 +30,15 @@ export class OfferAddComponent implements OnInit {
       expireDate: ['',Validators.required]
     })
 
+  }
+
+  insertOffer(){
+    this.objetoAInsertar={
+      "title": this.formulario.title,
+      "description": this.formulario.description,
+      "discount": this.formulario.discount,
+      "expireDate" : this.formulario.expireDate
+    }
   }
 
 }

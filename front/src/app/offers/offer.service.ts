@@ -16,7 +16,23 @@ export class OfferService {
   }
 
   insertOffer(s){
-    // 
+
+
+
+    this.ownserService.insertaMascota(this.objetoAInsertar).subscribe(data => {
+      console.log(data);
+
+      var myTable = document.getElementById('mascotukistabla'),
+      tbody = myTable.getElementsByTagName('tbody')[0],
+      tr = tbody.insertRow(0);
+  
+
+      var td = document.createElement('td');
+      td.innerHTML = data['title'];
+      tr.appendChild(td);
+
+    });
+
   }
 
   deleteOffer(s){
