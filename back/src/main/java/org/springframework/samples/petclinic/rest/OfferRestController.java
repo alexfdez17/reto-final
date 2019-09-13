@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/offer")
 @CrossOrigin(exposedHeaders = "errors, content-type")
+@RequestMapping("api/offer")
 public class OfferRestController {
 
 	@Autowired
@@ -36,13 +36,13 @@ public class OfferRestController {
 		return new ResponseEntity<List<Offer>>(offers, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Offer> deleteAOffer(@PathVariable(value = "id") int id) {
 		offerService.delete(id);
 		return new ResponseEntity<Offer>(HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Offer> updateOffer(@RequestBody @Valid Offer offer, @PathVariable(value = "id") int id) {
 		if (offer.getId() != id) {
 			return new ResponseEntity<Offer>(HttpStatus.NOT_FOUND);
