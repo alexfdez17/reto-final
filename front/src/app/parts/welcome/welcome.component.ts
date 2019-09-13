@@ -23,6 +23,7 @@
 
 import {Component, OnInit} from '@angular/core';
 import { OfferService } from 'app/offers/offer.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -32,7 +33,7 @@ import { OfferService } from 'app/offers/offer.service';
 export class WelcomeComponent implements OnInit {
   offers;
 
-  constructor(private offerService: OfferService) {
+  constructor(private offerService: OfferService,private router: Router) {
   }
 
   ngOnInit() {

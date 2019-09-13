@@ -25,11 +25,13 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {WelcomeComponent} from './welcome/welcome.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   declarations: [
     PageNotFoundComponent,
